@@ -38,10 +38,20 @@ promise2.then(response => console.log(response)).catch(error => console.log(erro
 // If All resolved, then Prints data of all
 // Else Rejected, then prints Error of one getting Error
 Promise.all([promise1, promise2])
+.then((responses) => {
+    console.log(responses);
+})
+.catch((error) => {
+    console.log(error.message);
+});
+
+
+// If One resolved, then Prints data of that 
+// Else Rejected, then prints Error of one getting Error
+Promise.race([promise1, promise2])
     .then((responses) => {
         console.log(responses);
     })
     .catch((error) => {
         console.log(error.message);
     });
-
