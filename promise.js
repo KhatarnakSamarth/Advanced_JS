@@ -55,3 +55,13 @@ Promise.race([promise1, promise2])
     .catch((error) => {
         console.log(error.message);
     });
+
+// Returns An Array of status (Resolved or rejected) 
+// and value of the Promise (Resoved message or Error Message)
+Promise.allSettled([promise1, promise2])
+    .then((responses) => {
+        console.log(responses);
+    })
+    .catch((error) => {
+        console.log(error.message);
+    });
