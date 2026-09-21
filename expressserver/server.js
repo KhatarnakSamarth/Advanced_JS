@@ -1,32 +1,30 @@
 import http from 'http';
 import fs from 'fs';
-
-let data
-
-const readStream = fs.createReadStream("index.html", { encoding: "utf8" });
-readStream.on("data", (chunk) => {
-    console.log(chunk)
-    data = chunk
-})
-
+let page = fs.readFileSync("index.html", { encoding: "utf8" });
 
 const server = http.createServer((req, res) => {
     console.log("hello");
-    const order = {
-        orderId: 10987,
-        des: "Delhi",
-        source: "Ghaziabad",
-        username: "ABC"
+
+    if (res.statusCode == 400){
+        red.end(JSON.stringify({'error' : '404 Not Found'}))
     }
+
     res.writeHead(200, {
-        "content-type": "application/html",
+        "content-type": "text/html",
         "custom-header": "Hello ECE"
     })
-    res.end(data)
-    // res.statusCode = 200;
-    // res.setHeader("content-type","application/json")
-    // res.end("Hello Everyone");
+
+    // const page = awatfs.readFile("index1.html", { encoding: "utf8" }, (err, data)=>{
+    //     if (err) {
+    //         return err.message
+    //     }
+    //         return data
+    // });
+
+    res.end(page)
+
 });
+
 server.listen(3000, "127.0.0.1", () => {
-    console.log("server is running on http://127.0.0.1:3000/..");
+    console.log("server is running on http://127.0.0.1:3000/");
 });
