@@ -1,5 +1,5 @@
 const calculate_area = (radius) => {
-    return 3.14*radius*radius
+    return (22*radius*radius)/7;
 }
 
-export default calculate_area;
+export {calculate_area};
