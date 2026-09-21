@@ -6,7 +6,7 @@ const server = http.createServer((req, res) => {
     console.log("hello");
 
     if (res.statusCode == 400){
-        red.end(JSON.stringify({'error' : '404 Not Found'}))
+        res.end(JSON.stringify({'error' : '404 Not Found'}))
     }
 
     res.writeHead(200, {
