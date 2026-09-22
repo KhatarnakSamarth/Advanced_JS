@@ -1,0 +1,2 @@
+Server side rendering : server fetches data and send the response after rendering
+Client side rendering : server fetches data and send the response then the client renders the data
