@@ -2,15 +2,22 @@ import express from 'express';
 import fs from 'fs'
 
 const app = express();
-const port = 3000;
-
-let page = fs.readFileSync("index.html", 'utf-8')
 
 app.get('/', (req, res) => {
-  res.setHeader("content-type", 'text/html');
-  res.send(page);
+  res.send("Home page");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`);
+app.get('/api/v1/books', (req, res) => {
+  let booksData = JSON.parse(fs.readFileSync("./data/books.json", 'utf-8'))
+  res.setHeader("content-type", 'application/json');
+  res.json({
+    status: "success",
+    data : {
+      books : booksData
+    }
+  })
+});
+
+app.listen(3000, () => {
+  console.log(`Server listening on port http://localhost:3000`);
 });
