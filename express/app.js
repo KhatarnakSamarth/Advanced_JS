@@ -7,13 +7,12 @@ app.get('/', (req, res) => {
   res.send("Home page");
 });
 
+let booksData = JSON.parse(fs.readFileSync("./data/books.json", 'utf-8'))
 app.get('/api/v1/books', (req, res) => {
-  let booksData = JSON.parse(fs.readFileSync("./data/books.json", 'utf-8'))
-  res.setHeader("content-type", 'application/json');
-  res.json({
+  res.status(200).json({
     status: "success",
-    data : {
-      books : booksData
+    data: {
+      books: booksData
     }
   })
 });
