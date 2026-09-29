@@ -27,8 +27,12 @@ app.get('/api/v1/books', (req, res) => {
       message: "Not Found"
     })
   }
-
 });
+
+app.get('/api/v1/books/:id', (req, res)=>{
+  res.send(req.params)
+  
+})
 
 app.listen(3000, () => {
   console.log(`Server listening on port http://localhost:3000`);
