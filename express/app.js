@@ -5,12 +5,14 @@ import { type } from 'os';
 
 const app = express();
 
+app.use(express.json())
+
+
 app.get('/', (req, res) => {
   res.send("Home page");
 });
 
 let booksData = JSON.parse(fs.readFileSync("./data/books.json", 'utf-8'))
-
 
 app.get('/api/v1/books', (req, res) => {
   try {
@@ -56,6 +58,10 @@ app.get('/api/v1/books/:id', (req, res) => {
   }
 })
 
+
+app.post('/api/v1/books', (req, res)=>{
+  res.send(req.body)
+})
 
 
 
