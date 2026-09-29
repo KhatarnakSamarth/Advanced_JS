@@ -16,7 +16,7 @@ app.get('/api/v1/books', (req, res) => {
   try {
     res.status(200).json({
       status: "success",
-      count :  booksData.length,
+      count: booksData.length,
       data: {
         books: booksData
       }
@@ -29,10 +29,35 @@ app.get('/api/v1/books', (req, res) => {
   }
 });
 
-app.get('/api/v1/books/:id', (req, res)=>{
-  res.send(req.params)
-  
+app.get('/api/v1/books/:id', (req, res) => {
+  try {
+    let id = req.params.id
+    let book = booksData.find(book => book.id === id)
+    if (!book) {
+      res.status(400).json({
+        status: "Fail",
+        message: `Book not found for id: ${id}`
+      })
+    }
+    else {
+      res.status(200).json({
+        status: "Success",
+        data: {
+          book: book
+        }
+      })
+    }
+  }
+  catch (error) {
+    req.status(500).json({
+      status: "Fail",
+      message: "Error Occured"
+    })
+  }
 })
+
+
+
 
 app.listen(3000, () => {
   console.log(`Server listening on port http://localhost:3000`);
