@@ -299,5 +299,18 @@
     ],
     "available": true,
     "price": 13.5
+  },
+  {
+    "id": "25",
+    "title": "Signals and Systems",
+    "author": "A. Anand",
+    "published_year": 1960,
+    "genres": [
+      "NAS",
+      "Signal",
+      "Systems"
+    ],
+    "available": true,
+    "price": 69.99
   }
 ]

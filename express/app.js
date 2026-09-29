@@ -60,7 +60,12 @@ app.get('/api/v1/books/:id', (req, res) => {
 
 
 app.post('/api/v1/books', (req, res)=>{
-  res.send(req.body)
+  booksData.push(req.body)
+  fs.writeFileSync('./data/books.json', JSON.stringify(booksData))
+  res.status(201).json({
+    status : "Success",
+    message : "Successfully Added"
+  })
 })
 
 
